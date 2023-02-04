@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:resume/Model.dart';
+import 'package:resume/resume4.dart';
 
 class Screen4 extends StatefulWidget {
   const Screen4({Key? key}) : super(key: key);
@@ -16,6 +17,18 @@ class _Screen4State extends State<Screen4> {
     Model data4=ModalRoute.of(context)!.settings.arguments as Model;
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Text("Your CV"),
+          actions: [
+            InkWell(
+                onTap: (){
+                  setState(() {
+                    resume4(data4);
+                  });
+                },
+                child: Icon(Icons.save)),
+          ],
+        ),
         body: Stack(
           children: [
             Row(

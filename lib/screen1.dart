@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:resume/Model.dart';
 
+import 'resume1.dart';
+
 class Screen1 extends StatefulWidget {
   const Screen1({Key? key}) : super(key: key);
 
@@ -22,7 +24,9 @@ class _Screen1State extends State<Screen1> {
           actions: [
             InkWell(
                 onTap: (){
-
+                  setState(() {
+                    resume1(data);
+                  });
                 },
                 child: Icon(Icons.save)),
           ],
@@ -30,7 +34,7 @@ class _Screen1State extends State<Screen1> {
         body: Row(
           children: [
             Container(
-              height: 773,
+              height: 710,
               width: 140,
               color: Color(0xff283548),
               child: Padding(
