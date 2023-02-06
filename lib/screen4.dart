@@ -240,7 +240,7 @@ class _Screen4State extends State<Screen4> {
                         backgroundImage: FileImage(File(data4.path!)),
                       )
                           : CircleAvatar(
-                        backgroundImage: AssetImage("assets/images/538642.png"),
+                        backgroundImage: AssetImage("assets/images/profile.png"),
                       ),
                     ),
                   ],

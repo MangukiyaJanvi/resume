@@ -231,7 +231,7 @@ class _HomeState extends State<Home> {
                         child: (path.isEmpty)?Container(
                           child: Column(
                             children: [
-                              Image.asset("assets/images/538642.png",height: 100,width: 100,fit: BoxFit.cover,),
+                              Image.asset("assets/images/profile.png",height: 100,width: 100,fit: BoxFit.cover,),
                               Text("Click to add image"),
                             ],
                           ),

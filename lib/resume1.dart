@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -6,10 +7,14 @@ import 'package:resume/Model.dart';
 
 Future<void> resume1(Model data) async {
   var pdf = pw.Document();
+  var img;
 
-  final img = pw.MemoryImage(
+if(data.path!.isNotEmpty) {
+   img = pw.MemoryImage(
     File('${data.path}').readAsBytesSync(),
   );
+}
+  var img1=pw.MemoryImage((await rootBundle.load('assets/images/profile.png')).buffer.asUint8List());
   pdf.addPage(
     pw.Page(
       margin: pw.EdgeInsets.all(10),
@@ -29,14 +34,24 @@ Future<void> resume1(Model data) async {
                   pw.SizedBox(
                     height: 30,
                   ),
-                  pw.Center(
+                  (data.path!.isEmpty)?pw.Center(
                     child: pw.Container(
                       height: 120,
                       width: 120,
                       decoration: pw.BoxDecoration(
                         shape: pw.BoxShape.circle,
                         color: PdfColors.white,
-                        image: pw.DecorationImage(image: img),
+                        image: pw.DecorationImage(image: img1),
+                      ),
+                    ),
+                  ):pw.Center(
+                    child: pw.Container(
+                      height: 120,
+                      width: 120,
+                      decoration: pw.BoxDecoration(
+                        shape: pw.BoxShape.circle,
+                        color: PdfColors.white,
+                        image: pw.DecorationImage(image: img1),
                       ),
                     ),
                   ),
@@ -63,8 +78,6 @@ Future<void> resume1(Model data) async {
                     children: [
                       pw.Row(
                         children: [
-                          // pw.Image.asset(
-                          //     "assets/images/call_FILL0_wght400_GRAD0_opsz48.png"),
                           pw.SizedBox(
                             width: 15,
                           ),

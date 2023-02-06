@@ -57,7 +57,7 @@ class _Screen1State extends State<Screen1> {
                               backgroundImage: FileImage(File(data.path!)),
                             )
                             : CircleAvatar(
-                          backgroundImage: AssetImage("assets/images/538642.png"),
+                          backgroundImage: AssetImage("assets/images/profile.png"),
                             ),
                       ),
                     ),

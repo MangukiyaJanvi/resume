@@ -231,7 +231,7 @@ class _Screen3State extends State<Screen3> {
                       child: (data3.j == true)
                           ? Image.file(File(data3.path!),height: 100,width: 100,fit: BoxFit.cover,)
                           : Image.asset(
-                        "assets/images/538642.png",
+                        "assets/images/profile.png",
                         height: 100,
                         width: 100,
                         fit: BoxFit.cover,
