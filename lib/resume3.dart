@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
@@ -6,9 +7,14 @@ import 'package:resume/Model.dart';
 
 Future<void> resume3(Model data3) async {
   var pdf = pw.Document();
-  final img = pw.MemoryImage(
-    File('${data3.path}').readAsBytesSync(),
-  );
+  var img;
+
+  if(data3.path!.isNotEmpty) {
+    img = pw.MemoryImage(
+      File('${data3.path}').readAsBytesSync(),
+    );
+  }
+  var img1=pw.MemoryImage((await rootBundle.load('assets/images/profile.png')).buffer.asUint8List());
   pdf.addPage(
     pw.Page(
       margin: pw.EdgeInsets.all(10),
@@ -208,13 +214,25 @@ Future<void> resume3(Model data3) async {
                       ],
                     ),
                   ),
-                  pw.Container(
-                    height: 120,
-                    width: 120,
-                    decoration: pw.BoxDecoration(
-                      shape: pw.BoxShape.circle,
-                      color: PdfColors.white,
-                      image: pw.DecorationImage(image: img),
+                  (data3.path!.isEmpty)?pw.Center(
+                    child: pw.Container(
+                      height: 120,
+                      width: 120,
+                      decoration: pw.BoxDecoration(
+                        shape: pw.BoxShape.circle,
+                        color: PdfColors.white,
+                        image: pw.DecorationImage(image: img1),
+                      ),
+                    ),
+                  ):pw.Center(
+                    child: pw.Container(
+                      height: 120,
+                      width: 120,
+                      decoration: pw.BoxDecoration(
+                        shape: pw.BoxShape.circle,
+                        color: PdfColors.white,
+                        image: pw.DecorationImage(image: img1),
+                      ),
                     ),
                   ),
                 ],
